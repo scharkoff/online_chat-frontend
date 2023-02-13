@@ -1,14 +1,10 @@
-import React from "react";
-import io from "socket.io-client";
+import "./styles/global.scss";
+import Login from "./components/Login";
 
-const socket = io("http://localhost:4000");
-
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>Чатик</h1>
+    <div className="wrapper">
+      <Login />
     </div>
   );
 }
-
-export default App;
