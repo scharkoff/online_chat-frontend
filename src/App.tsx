@@ -6,6 +6,7 @@ import initialState from "./utils/state/state";
 
 import "./styles/global.scss";
 import { EAuth } from "./utils/reducers/types/auth";
+import Chat from "./components/Chat/index";
 
 export default function App() {
   const [state, dispatch] = React.useReducer(authReducer, initialState);
@@ -17,11 +18,9 @@ export default function App() {
     });
   };
 
-  console.log(state);
-
   return (
     <div className="wrapper">
-      <Login onLogin={onLogin} />
+      {!state.isAuth ? <Login onLogin={onLogin} /> : <Chat />}
     </div>
   );
 }

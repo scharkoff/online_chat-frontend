@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-import styles from "./styles/Login.module.scss";
+import styles from "./scss/Login.module.scss";
 
 import { IRoom, TInputs, INickname, ILoginProps } from "./types";
 import axios from "../../utils/axios";
