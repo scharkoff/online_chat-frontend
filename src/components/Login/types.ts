@@ -10,3 +10,7 @@ export interface IRoom {
 export interface INickname {
   nickname: string;
 }
+
+export interface ILoginProps {
+  onLogin: () => void;
+}

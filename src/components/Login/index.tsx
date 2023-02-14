@@ -7,9 +7,11 @@ import Button from "@mui/material/Button";
 
 import styles from "./styles/Login.module.scss";
 
-import { IRoom, TInputs, INickname } from "./types";
+import { IRoom, TInputs, INickname, ILoginProps } from "./types";
+import axios from "../../utils/axios";
+import socket from "../../utils/socket";
 
-export default function Login() {
+export default function Login({ onLogin }: ILoginProps) {
   const {
     register,
     handleSubmit,
@@ -19,7 +21,13 @@ export default function Login() {
   const [roomId, setRoomId] = React.useState<IRoom | string>("");
   const [nickname, setNickname] = React.useState<INickname | string>("");
 
-  const onSubmitConnect: SubmitHandler<TInputs> = (data) => console.log(data);
+  const onSubmitConnect: SubmitHandler<TInputs> = (data) => {
+    socket.connect();
+    axios.post("/rooms", data).then((rooms) => {
+      onLogin();
+      console.log(rooms);
+    });
+  };
 
   return (
     <Paper elevation={1} className={styles.formWrapper}>
