@@ -1,7 +1,11 @@
 import { IState } from "./types";
 
 const initialState: IState = {
-  isAuth: false,
+  joined: false,
+  userName: "",
+  roomId: "",
+  users: [],
+  messages: [],
 };
 
 export default initialState;

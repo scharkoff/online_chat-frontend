@@ -4,30 +4,25 @@ import PersonIcon from "@mui/icons-material/Person";
 import Typography from "@mui/material/Typography";
 
 import styles from "./scss/UserList.module.scss";
+import { IUserListProps } from "./types";
 
-export default function UserList() {
+export default function UserList({ users, messages }: IUserListProps) {
   return (
     <div className={styles.userListWrapper}>
       <Typography variant="h6" color="initial">
-        Users (3):
+        Online ({users ? users.length : 0}):
       </Typography>
       <ul className={styles.userList}>
-        <li className={styles.userListItem}>
-          <PersonIcon style={{ marginRight: 10 }} />
-          nickname
-        </li>
-        <li className={styles.userListItem}>
-          <PersonIcon style={{ marginRight: 10 }} />
-          nickname
-        </li>
-        <li className={styles.userListItem}>
-          <PersonIcon style={{ marginRight: 10 }} />
-          nickname
-        </li>
-        <li className={styles.userListItem}>
-          <PersonIcon style={{ marginRight: 10 }} />
-          nickname
-        </li>
+        {users
+          ? users.map((user, i) => {
+              return (
+                <li className={styles.userListItem} key={i}>
+                  <PersonIcon style={{ marginRight: 10 }} />
+                  {user}
+                </li>
+              );
+            })
+          : []}
       </ul>
     </div>
   );

@@ -12,5 +12,10 @@ export interface INickname {
 }
 
 export interface ILoginProps {
-  onLogin: () => void;
+  onJoin: (props: IonJoinProps) => void;
+}
+
+export interface IonJoinProps {
+  roomId: string;
+  userName: string;
 }

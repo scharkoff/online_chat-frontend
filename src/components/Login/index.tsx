@@ -8,10 +8,9 @@ import Button from "@mui/material/Button";
 import styles from "./scss/Login.module.scss";
 
 import { IRoom, TInputs, INickname, ILoginProps } from "./types";
-import axios from "../../utils/axios";
-import socket from "../../utils/socket";
+import axios from "../../utils/axios/axios";
 
-export default function Login({ onLogin }: ILoginProps) {
+export const Login = ({ onJoin }: ILoginProps) => {
   const {
     register,
     handleSubmit,
@@ -20,12 +19,16 @@ export default function Login({ onLogin }: ILoginProps) {
 
   const [roomId, setRoomId] = React.useState<IRoom | string>("");
   const [nickname, setNickname] = React.useState<INickname | string>("");
+  const [loading, setLoading] = React.useState<boolean>(false);
 
-  const onSubmitConnect: SubmitHandler<TInputs> = (data) => {
-    socket.connect();
-    axios.post("/rooms", data).then((rooms) => {
-      onLogin();
-      console.log(rooms);
+  const onSubmitConnect: SubmitHandler<TInputs> = async (data) => {
+    setLoading(true);
+    await axios.post("/rooms", data).then(() => {
+      const options = {
+        roomId: data.roomId,
+        userName: data.nickname,
+      };
+      onJoin(options);
     });
   };
 
@@ -57,10 +60,10 @@ export default function Login({ onLogin }: ILoginProps) {
           onChange={(e) => setNickname(e.target.value)}
         ></TextField>
 
-        <Button type="submit" variant="contained">
-          Connect
+        <Button type="submit" variant="contained" disabled={loading}>
+          {loading ? "Connecting..." : "Connect"}
         </Button>
       </form>
     </Paper>
   );
-}
+};

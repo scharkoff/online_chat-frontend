@@ -1,3 +1,7 @@
 export interface IState {
-  isAuth: boolean;
+  joined: boolean;
+  userName: string;
+  roomId: string;
+  users: string[];
+  messages: string[];
 }

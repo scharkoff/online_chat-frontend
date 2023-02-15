@@ -1,26 +1,52 @@
 import React from "react";
-import Login from "./components/Login";
+import { Login } from "./components/Login";
 
-import authReducer from "./utils/reducers/auth";
+import joinReducer from "./utils/reducers/join";
 import initialState from "./utils/state/state";
+import { EJoin } from "./utils/reducers/types/join";
+import socket from "./utils/socket";
+import axios from "./utils/axios/axios";
+import { setUsers } from "./utils/functions/index";
+import { IGetData } from "./utils/axios/types";
+
+import Chat from "./components/Chat/index";
+import { IonJoinProps } from "./components/Login/types";
 
 import "./styles/global.scss";
-import { EAuth } from "./utils/reducers/types/auth";
-import Chat from "./components/Chat/index";
 
 export default function App() {
-  const [state, dispatch] = React.useReducer(authReducer, initialState);
+  const [state, dispatch] = React.useReducer(joinReducer, initialState);
 
-  const onLogin = (): void => {
+  const onJoin = (data: IonJoinProps): void => {
     dispatch({
-      type: EAuth.IS_AUTH,
-      payload: true,
+      type: EJoin.SET_JOIN,
+      payload: { ...data, joined: true, users: [], messages: [] },
+    });
+
+    socket.emit("ROOM:JOIN", {
+      roomId: data.roomId,
+      userName: data.userName,
+    });
+
+    axios.get(`/rooms/${data.roomId}`).then(({ data }: IGetData) => {
+      console.log(data);
+      setUsers(data.users, dispatch, state);
     });
   };
 
+  React.useEffect(() => {
+    socket.on("ROOM:JOINED", (users) => {
+      setUsers(users, dispatch, state);
+    });
+
+    socket.on("ROOM:UPDATE_USERS", (users) => {
+      setUsers(users, dispatch, state);
+    });
+  }, []);
+
   return (
     <div className="wrapper">
-      {!state.isAuth ? <Login onLogin={onLogin} /> : <Chat />}
+      {!state.joined ? <Login onJoin={onJoin} /> : <Chat state={state} />}
     </div>
   );
 }
