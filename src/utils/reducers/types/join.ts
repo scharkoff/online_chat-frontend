@@ -14,5 +14,5 @@ export interface IJoin {
 export enum EJoin {
   SET_JOIN = "SET_JOIN",
   SET_USERS = "SET_USERS",
-  SET_MESSAGES = "SET_MESSAGES",
+  PUSH_MESSAGE = "PUSH_MESSAGE",
 }

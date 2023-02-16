@@ -7,7 +7,7 @@ import { EJoin } from "./utils/reducers/types/join";
 import socket from "./utils/socket";
 import axios from "./utils/axios/axios";
 import { setUsers } from "./utils/functions/index";
-import { IGetData } from "./utils/axios/types";
+import { IGetRoomData } from "./utils/axios/types";
 
 import Chat from "./components/Chat/index";
 import { IonJoinProps } from "./components/Login/types";
@@ -28,7 +28,7 @@ export default function App() {
       userName: data.userName,
     });
 
-    axios.get(`/rooms/${data.roomId}`).then(({ data }: IGetData) => {
+    axios.get(`/rooms/${data.roomId}`).then(({ data }: IGetRoomData) => {
       console.log(data);
       setUsers(data.users, dispatch, state);
     });
@@ -41,6 +41,14 @@ export default function App() {
 
     socket.on("ROOM:UPDATE_USERS", (users) => {
       setUsers(users, dispatch, state);
+    });
+
+    socket.on("ROOM:PUSH_NEW_MESSAGE", (messages) => {
+      console.log(messages);
+      dispatch({
+        type: EJoin.PUSH_MESSAGE,
+        payload: messages,
+      });
     });
   }, []);
 

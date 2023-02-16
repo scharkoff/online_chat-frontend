@@ -17,7 +17,7 @@ export default function joinReducer(state: IState, action: IJoin): IState {
         users: action.payload.users,
       };
 
-    case "SET_MESSAGES":
+    case "PUSH_MESSAGE":
       return {
         ...state,
         messages: action.payload.messages,

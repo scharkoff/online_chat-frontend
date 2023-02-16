@@ -1,4 +1,4 @@
-export interface IGetData {
+export interface IGetRoomData {
   data: {
     users: string[];
     messages: string[];

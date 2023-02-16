@@ -2,13 +2,12 @@ import React from "react";
 import Message from "../Message";
 
 import styles from "./scss/Messages.module.scss";
+import { IMessagesProps } from "./types";
 
-export default function Messages() {
+export default function Messages({ users, messages }: IMessagesProps) {
   return (
     <div className={styles.messagesWindow}>
-      <Message />
-      <Message />
-      <Message />
+      <Message messages={messages} />
     </div>
   );
 }

@@ -13,8 +13,8 @@ export default function Chat({ state }: IChatProps) {
     <Paper elevation={1} style={{ display: "flex" }}>
       <UserList {...state} />
       <div className={styles.chatWindow}>
-        <Messages />
-        <AddMessage />
+        <Messages {...state} />
+        <AddMessage {...state} />
       </div>
     </Paper>
   );
