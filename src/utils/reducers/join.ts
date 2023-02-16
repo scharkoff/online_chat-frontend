@@ -18,9 +18,11 @@ export default function joinReducer(state: IState, action: IJoin): IState {
       };
 
     case "PUSH_MESSAGE":
+      console.log("action.payload.message", action.payload.message);
       return {
         ...state,
-        messages: action.payload.messages,
+        // @ts-ignore
+        messages: [...state.messages, action.payload.message],
       };
 
     default:

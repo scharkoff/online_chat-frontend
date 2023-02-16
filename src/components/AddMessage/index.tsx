@@ -7,7 +7,13 @@ import Button from "@mui/material/Button";
 import socket from "../../utils/socket";
 import { IAddMessageProps } from "./types";
 
-export default function AddMessage({ userName, roomId }: IAddMessageProps) {
+export default function AddMessage({
+  userName,
+  roomId,
+  addMessage,
+  state,
+  dispatch,
+}: IAddMessageProps) {
   const [text, setText] = React.useState<string>("");
 
   function onSendMessage() {
@@ -16,7 +22,7 @@ export default function AddMessage({ userName, roomId }: IAddMessageProps) {
       text,
       userName,
     });
-
+    addMessage({ userName, text }, dispatch, state);
     setText("");
   }
   return (
@@ -32,7 +38,12 @@ export default function AddMessage({ userName, roomId }: IAddMessageProps) {
         maxRows={5}
       />
 
-      <Button onClick={onSendMessage} variant="contained" color="primary">
+      <Button
+        onClick={onSendMessage}
+        variant="contained"
+        color="primary"
+        disabled={Boolean(!text)}
+      >
         Send
       </Button>
     </div>

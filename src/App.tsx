@@ -6,7 +6,7 @@ import initialState from "./utils/state/state";
 import { EJoin } from "./utils/reducers/types/join";
 import socket from "./utils/socket";
 import axios from "./utils/axios/axios";
-import { setUsers } from "./utils/functions/index";
+import { setUsers, addMessage } from "./utils/functions/index";
 import { IGetRoomData } from "./utils/axios/types";
 
 import Chat from "./components/Chat/index";
@@ -20,7 +20,10 @@ export default function App() {
   const onJoin = (data: IonJoinProps): void => {
     dispatch({
       type: EJoin.SET_JOIN,
-      payload: { ...data, joined: true, users: [], messages: [] },
+      payload: {
+        ...data,
+        joined: true,
+      },
     });
 
     socket.emit("ROOM:JOIN", {
@@ -43,18 +46,21 @@ export default function App() {
       setUsers(users, dispatch, state);
     });
 
-    socket.on("ROOM:PUSH_NEW_MESSAGE", (messages) => {
-      console.log(messages);
-      dispatch({
-        type: EJoin.PUSH_MESSAGE,
-        payload: messages,
-      });
+    socket.on("ROOM:PUSH_NEW_MESSAGE", (message) => {
+      console.log(message);
+      addMessage(message, dispatch, state);
     });
   }, []);
 
+  console.log("state: ", state);
+
   return (
     <div className="wrapper">
-      {!state.joined ? <Login onJoin={onJoin} /> : <Chat state={state} />}
+      {!state.joined ? (
+        <Login onJoin={onJoin} />
+      ) : (
+        <Chat state={state} dispatch={dispatch} addMessage={addMessage} />
+      )}
     </div>
   );
 }

@@ -6,10 +6,13 @@ import Typography from "@mui/material/Typography";
 import styles from "./scss/UserList.module.scss";
 import { IUserListProps } from "./types";
 
-export default function UserList({ users, messages }: IUserListProps) {
+export default function UserList({ users, roomId }: IUserListProps) {
   return (
     <div className={styles.userListWrapper}>
-      <Typography variant="h6" color="initial">
+      <Typography variant="subtitle1" color="initial" className={styles.roomId}>
+        Room: <b>{roomId}</b>
+      </Typography>
+      <Typography variant="h6" color="initial" style={{ marginTop: 10 }}>
         Online ({users ? users.length : 0}):
       </Typography>
       <ul className={styles.userList}>

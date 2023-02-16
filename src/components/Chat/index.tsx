@@ -8,13 +8,18 @@ import styles from "./scss/Chat.module.scss";
 import AddMessage from "../AddMessage";
 import { IChatProps } from "./types";
 
-export default function Chat({ state }: IChatProps) {
+export default function Chat({ state, addMessage, dispatch }: IChatProps) {
   return (
     <Paper elevation={1} style={{ display: "flex" }}>
       <UserList {...state} />
       <div className={styles.chatWindow}>
         <Messages {...state} />
-        <AddMessage {...state} />
+        <AddMessage
+          {...state}
+          addMessage={addMessage}
+          state={state}
+          dispatch={dispatch}
+        />
       </div>
     </Paper>
   );

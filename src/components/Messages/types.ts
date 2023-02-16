@@ -1,4 +1,5 @@
+import { IMessage } from "../../types";
+
 export interface IMessagesProps {
-  users: string[];
-  messages: string[];
+  messages?: IMessage[];
 }

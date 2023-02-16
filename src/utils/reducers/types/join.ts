@@ -1,9 +1,11 @@
+import { IMessage } from "../../../types";
+
 interface IJoinPayload {
-  joined: boolean;
-  roomId: string;
-  userName: string;
-  users: string[];
-  messages: string[];
+  joined?: boolean;
+  roomId?: string;
+  userName?: string;
+  users?: string[];
+  message?: IMessage;
 }
 
 export interface IJoin {

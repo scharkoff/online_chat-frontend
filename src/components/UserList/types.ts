@@ -1,4 +1,7 @@
+import { IMessage } from "../../types";
+
 export interface IUserListProps {
-  users: string[];
-  messages: string[];
+  roomId?: string;
+  users?: string[];
+  messages?: IMessage[];
 }
