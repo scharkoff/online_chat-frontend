@@ -1,7 +1,8 @@
-import { IMessage } from "../../types";
+import { IUserDTO } from "../dto/user";
+import { IMessageDTO } from "../dto/message";
 
-export interface IUserListProps {
+export interface IUserListDTO {
   roomId?: string;
-  users?: string[];
-  messages?: IMessage[];
+  users?: IUserDTO[];
+  messages?: IMessageDTO[];
 }

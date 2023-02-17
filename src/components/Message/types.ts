@@ -1,5 +1,5 @@
-import { IMessage } from "../../types";
+import { IMessageDTO } from "../dto/message";
 
 export interface IMessageProps {
-  messages?: IMessage[];
+  messages?: IMessageDTO[];
 }

@@ -1,15 +1,11 @@
-import { IMessage } from "../../types";
-import { IJoin } from "../../utils/reducers/types/join";
-import { IState } from "../../utils/state/types";
+import { IMessageDTO } from "../dto/message";
+import { IMessagesStateDTO } from "../../utils/state/types/messages";
+import { ISetMessagesAction } from "../../utils/reducers/types/messages";
 
-export interface IAddMessageProps {
-  userName?: string;
-  roomId?: string;
+export interface IAddMessageDTO {
   addMessage: (
-    message: IMessage,
-    dispatch: React.Dispatch<IJoin>,
-    state: IState
+    message: IMessageDTO,
+    dispatch: React.Dispatch<ISetMessagesAction>,
+    state: IMessagesStateDTO
   ) => void;
-  state: IState;
-  dispatch: React.Dispatch<IJoin>;
 }

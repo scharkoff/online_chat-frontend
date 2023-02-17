@@ -7,21 +7,21 @@ import Button from "@mui/material/Button";
 
 import styles from "./scss/Login.module.scss";
 
-import { IRoom, TInputs, INickname, ILoginProps } from "./types";
+import { TInputsDTO, ILoginDTO } from "./types";
 import axios from "../../utils/axios/axios";
 
-export const Login = ({ onJoin }: ILoginProps) => {
+export const Login = ({ onJoin }: ILoginDTO) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TInputs>();
+  } = useForm<TInputsDTO>();
 
-  const [roomId, setRoomId] = React.useState<IRoom | string>("");
-  const [nickname, setNickname] = React.useState<INickname | string>("");
+  const [roomId, setRoomId] = React.useState<string>("");
+  const [nickname, setNickname] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  const onSubmitConnect: SubmitHandler<TInputs> = async (data) => {
+  const onSubmitConnect: SubmitHandler<TInputsDTO> = async (data) => {
     setLoading(true);
     await axios.post("/rooms", data).then(() => {
       const options = {
@@ -54,8 +54,11 @@ export const Login = ({ onJoin }: ILoginProps) => {
           variant="outlined"
           label="Your nickname"
           value={nickname}
-          {...register("nickname", { required: true })}
-          helperText={errors.roomId && "The field cannot be empty"}
+          {...register("nickname", { required: true, maxLength: 15 })}
+          helperText={
+            errors.nickname &&
+            "The field cannot be empty and more than 15 characters"
+          }
           error={errors.nickname && true}
           onChange={(e) => setNickname(e.target.value)}
         ></TextField>

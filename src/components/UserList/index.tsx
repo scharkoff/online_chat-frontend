@@ -4,9 +4,14 @@ import PersonIcon from "@mui/icons-material/Person";
 import Typography from "@mui/material/Typography";
 
 import styles from "./scss/UserList.module.scss";
-import { IUserListProps } from "./types";
+import { UsersContext, JoinContext } from "../../data/app/context";
+import { IUsersStateDTO } from "../../utils/state/types/user";
+import { IJoinStateDTO } from "../../utils/state/types/join";
 
-export default function UserList({ users, roomId }: IUserListProps) {
+export default function UserList() {
+  const { users } = React.useContext<IUsersStateDTO>(UsersContext);
+  const { userName, roomId } = React.useContext<IJoinStateDTO>(JoinContext);
+
   return (
     <div className={styles.userListWrapper}>
       <Typography variant="subtitle1" color="initial" className={styles.roomId}>
@@ -21,12 +26,21 @@ export default function UserList({ users, roomId }: IUserListProps) {
               return (
                 <li className={styles.userListItem} key={i}>
                   <PersonIcon style={{ marginRight: 10 }} />
-                  {user}
+                  {user.userName}
                 </li>
               );
             })
           : []}
       </ul>
+      <div className={styles.helloUser}>
+        <Typography
+          variant="subtitle1"
+          color="initial"
+          className={styles.userName}
+        >
+          Hello, <b style={{ color: "#651fff" }}>{userName}</b>
+        </Typography>
+      </div>
     </div>
   );
 }

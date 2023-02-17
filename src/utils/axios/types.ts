@@ -1,8 +1,9 @@
-import { IMessage } from "../../types";
+import { IUserDTO } from "../../components/dto/user";
+import { IMessageDTO } from "../../components/dto/message";
 
-export interface IGetRoomData {
+export interface IGetRoomDataDTO {
   data: {
-    users: string[];
-    messages: IMessage[];
+    users: IUserDTO[];
+    messages: IMessageDTO[];
   };
 }

@@ -1,16 +1,12 @@
-import { IMessage } from "../../../types";
-
-interface IJoinPayload {
+export interface IJoinDTO {
   joined?: boolean;
-  roomId?: string;
-  userName?: string;
-  users?: string[];
-  message?: IMessage;
+  roomId: string;
+  userName: string;
 }
 
-export interface IJoin {
+export interface IJoinAction {
   type: EJoin;
-  payload: IJoinPayload;
+  payload: IJoinDTO;
 }
 
 export enum EJoin {

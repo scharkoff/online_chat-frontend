@@ -5,16 +5,21 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import styles from "./scss/AddMessage.module.scss";
 import Button from "@mui/material/Button";
 import socket from "../../utils/socket";
-import { IAddMessageProps } from "./types";
+import { IAddMessageDTO } from "./types";
+import { IMessageDTO } from "../dto/message";
+import {
+  JoinContext,
+  MessagesContext,
+  IMessagesContextDTO,
+} from "../../data/app/context";
+import { IJoinStateDTO } from "../../utils/state/types/join";
 
-export default function AddMessage({
-  userName,
-  roomId,
-  addMessage,
-  state,
-  dispatch,
-}: IAddMessageProps) {
+export default function AddMessage({ addMessage }: IAddMessageDTO) {
   const [text, setText] = React.useState<string>("");
+
+  const { roomId, userName } = React.useContext<IJoinStateDTO>(JoinContext);
+  const { messagesState, messagesDispatch } =
+    React.useContext<IMessagesContextDTO>(MessagesContext);
 
   function onSendMessage() {
     socket.emit("ROOM:NEW_MESSAGE", {
@@ -22,7 +27,8 @@ export default function AddMessage({
       text,
       userName,
     });
-    addMessage({ userName, text }, dispatch, state);
+    const message: IMessageDTO = { userName, text };
+    addMessage(message, messagesDispatch, messagesState);
     setText("");
   }
   return (

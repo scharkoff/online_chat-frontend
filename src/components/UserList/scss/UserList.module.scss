@@ -1,12 +1,13 @@
 .userListWrapper {
   padding: 20px 40px;
   background-color: rgb(248, 248, 248);
+  position: relative;
 }
 
 .userList {
   list-style: none;
   width: 200px;
-  max-height: 500px;
+  max-height: 470px;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -22,11 +23,36 @@
 }
 
 .roomId {
+  padding-bottom: 10px;
   position: relative;
 
   &::after {
     position: absolute;
     bottom: 0;
+    left: 0;
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: #dddddd;
+  }
+}
+
+.helloUser {
+  display: flex;
+  word-break: break-all;
+  max-width: 200px;
+  position: absolute;
+  bottom: 20px;
+}
+
+.userName {
+  position: relative;
+  padding-top: 10px;
+  color: grey !important;
+
+  &::after {
+    position: absolute;
+    top: 0;
     left: 0;
     content: "";
     height: 1px;

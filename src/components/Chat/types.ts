@@ -1,13 +1,11 @@
-import { IState } from "../../utils/state/types";
-import { IMessage } from "../../types";
-import { IJoin } from "../../utils/reducers/types/join";
+import { IMessageDTO } from "../dto/message";
+import { IMessagesStateDTO } from "../../utils/state/types/messages";
+import { ISetMessagesAction } from "../../utils/reducers/types/messages";
 
-export interface IChatProps {
-  state: IState;
+export interface IChatDTO {
   addMessage: (
-    message: IMessage,
-    dispatch: React.Dispatch<IJoin>,
-    state: IState
+    message: IMessageDTO,
+    dispatch: React.Dispatch<ISetMessagesAction>,
+    state: IMessagesStateDTO
   ) => void;
-  dispatch: React.Dispatch<IJoin>;
 }
