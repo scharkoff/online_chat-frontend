@@ -1,3 +1,5 @@
+import { EActionTypes } from "./enum";
+
 export interface IJoinDTO {
   joined: boolean;
   roomId: string;
@@ -5,12 +7,6 @@ export interface IJoinDTO {
 }
 
 export interface IJoinAction {
-  type: EJoin;
+  type: EActionTypes;
   payload: IJoinDTO;
-}
-
-export enum EJoin {
-  SET_JOIN = "SET_JOIN",
-  SET_USERS = "SET_USERS",
-  PUSH_MESSAGE = "PUSH_MESSAGE",
 }

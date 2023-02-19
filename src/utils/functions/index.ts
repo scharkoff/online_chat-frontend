@@ -1,10 +1,9 @@
-import { EJoin } from "../reducers/types/join";
 import { IUserDTO } from "../../components/dto/user";
 import { IMessageDTO } from "../../components/dto/message";
 import { ISetUsersAction } from "../reducers/types/user";
 import { IAddMessageAction } from "../reducers/types/messages";
 import { IUsersState } from "../state/types/user";
-import { IMessagesState } from "../state/types/messages";
+import { EActionTypes } from "../reducers/types/enum";
 
 export function setUsers(
   users: IUserDTO[],
@@ -13,7 +12,7 @@ export function setUsers(
 ) {
   console.log("users from setUsers: ", users);
   dispatch({
-    type: EJoin.SET_USERS,
+    type: EActionTypes.SET_USERS,
     payload: { users },
   });
 }
@@ -23,7 +22,7 @@ export function addMessage(
   dispatch: React.Dispatch<IAddMessageAction>
 ) {
   dispatch({
-    type: EJoin.PUSH_MESSAGE,
+    type: EActionTypes.PUSH_MESSAGE,
     payload: { message },
   });
 }

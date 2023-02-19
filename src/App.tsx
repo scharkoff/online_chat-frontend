@@ -2,7 +2,7 @@ import React from "react";
 import { Login } from "./components/Login";
 
 import joinReducer from "./utils/reducers/join";
-import { EJoin, IJoinDTO } from "./utils/reducers/types/join";
+import { IJoinDTO } from "./utils/reducers/types/join";
 import socket from "./utils/socket";
 import axios from "./utils/axios/axios";
 import { setUsers, addMessage } from "./utils/functions/index";
@@ -17,6 +17,7 @@ import usersReducer from "./utils/reducers/users";
 import messagesReducer from "./utils/reducers/message";
 import initialMessagesState from "./utils/state/messages";
 import { JoinContext, UsersContext, MessagesContext } from "./data/app/context";
+import { EActionTypes } from "./utils/reducers/types/enum";
 
 export default function App() {
   const [joinState, joinDispatch] = React.useReducer(
@@ -34,7 +35,7 @@ export default function App() {
 
   const onJoin = (data: IJoinDTO): void => {
     joinDispatch({
-      type: EJoin.SET_JOIN,
+      type: EActionTypes.SET_JOIN,
       payload: {
         ...data,
       },
