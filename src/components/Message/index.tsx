@@ -1,9 +1,12 @@
 import React from "react";
 
 import styles from "./scss/Message.module.scss";
+import clsx from "clsx";
 import { IMessageProps } from "./types";
+import { JoinContext } from "../../data/app/context";
 
 export default function Message({ messages }: IMessageProps) {
+  const { userName } = React.useContext(JoinContext);
   console.log("messages", messages);
   return (
     <>
@@ -11,7 +14,10 @@ export default function Message({ messages }: IMessageProps) {
         ? messages.map((message, i) => {
             return (
               <div
-                className={styles.message}
+                className={clsx({
+                  [styles.message]: true,
+                  [styles.myMessage]: userName === message?.userName,
+                })}
                 key={message?.text ? message?.text + i : i + Math.random() * 10}
               >
                 <div className={styles.messageText}>{message?.text}</div>

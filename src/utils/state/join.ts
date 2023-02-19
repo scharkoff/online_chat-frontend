@@ -1,6 +1,6 @@
-import { IJoinStateDTO } from "./types/join";
+import { IJoinState } from "./types/join";
 
-const initialJoinState: IJoinStateDTO = {
+const initialJoinState: IJoinState = {
   joined: false,
   userName: "",
   roomId: "",

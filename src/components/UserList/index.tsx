@@ -5,12 +5,12 @@ import Typography from "@mui/material/Typography";
 
 import styles from "./scss/UserList.module.scss";
 import { UsersContext, JoinContext } from "../../data/app/context";
-import { IUsersStateDTO } from "../../utils/state/types/user";
-import { IJoinStateDTO } from "../../utils/state/types/join";
+import { IUsersState } from "../../utils/state/types/user";
+import { IJoinState } from "../../utils/state/types/join";
 
 export default function UserList() {
-  const { users } = React.useContext<IUsersStateDTO>(UsersContext);
-  const { userName, roomId } = React.useContext<IJoinStateDTO>(JoinContext);
+  const { users } = React.useContext<IUsersState>(UsersContext);
+  const { userName, roomId } = React.useContext<IJoinState>(JoinContext);
 
   return (
     <div className={styles.userListWrapper}>

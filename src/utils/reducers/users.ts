@@ -1,10 +1,10 @@
 import { ISetUsersAction } from "./types/user";
-import { IUsersStateDTO } from "../state/types/user";
+import { IUsersState } from "../state/types/user";
 
 export default function usersReducer(
-  state: IUsersStateDTO,
+  state: IUsersState,
   action: ISetUsersAction
-): IUsersStateDTO {
+): IUsersState {
   switch (action.type) {
     case "SET_USERS":
       return {

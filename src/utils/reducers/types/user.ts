@@ -1,11 +1,11 @@
 import { IUserDTO } from "../../../components/dto/user";
 import { EJoin } from "./join";
 
-interface IUsersPayloadDTO {
+interface ISetUsersPayloadDTO {
   users: IUserDTO[];
 }
 
 export interface ISetUsersAction {
   type: EJoin;
-  payload: IUsersPayloadDTO;
+  payload: ISetUsersPayloadDTO;
 }

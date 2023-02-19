@@ -1,5 +1,5 @@
 import { IMessageDTO } from "../../../components/dto/message";
 
-export interface IMessagesStateDTO {
+export interface IMessagesState {
   messages: IMessageDTO[];
 }

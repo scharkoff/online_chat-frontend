@@ -1,9 +1,19 @@
 .message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  word-break: break-all;
   margin-bottom: 30px;
 }
 
+.myMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  word-break: break-all;
+}
+
 .messageText {
-  max-width: 350px;
   color: #fff;
   background-color: #834bff;
   font-weight: 300;

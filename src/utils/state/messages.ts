@@ -1,6 +1,6 @@
-import { IMessagesStateDTO } from "./types/messages";
+import { IMessagesState } from "./types/messages";
 
-const initialMessagesState: IMessagesStateDTO = {
+const initialMessagesState: IMessagesState = {
   messages: [],
 };
 

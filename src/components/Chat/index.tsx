@@ -6,9 +6,9 @@ import Messages from "../Messages";
 
 import styles from "./scss/Chat.module.scss";
 import AddMessage from "../AddMessage";
-import { IChatDTO } from "./types";
+import { IChatProps } from "./types";
 
-export default function Chat({ addMessage }: IChatDTO) {
+export default function Chat({ addMessage }: IChatProps) {
   return (
     <Paper elevation={1} style={{ display: "flex" }}>
       <UserList />

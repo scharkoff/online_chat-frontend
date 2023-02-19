@@ -1,6 +1,6 @@
-import { IUsersStateDTO } from "./types/user";
+import { IUsersState } from "./types/user";
 
-const initialUsersState: IUsersStateDTO = {
+const initialUsersState: IUsersState = {
   users: [],
 };
 

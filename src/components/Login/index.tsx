@@ -7,10 +7,11 @@ import Button from "@mui/material/Button";
 
 import styles from "./scss/Login.module.scss";
 
-import { TInputsDTO, ILoginDTO } from "./types";
+import { TInputsDTO, ILoginProps } from "./types";
 import axios from "../../utils/axios/axios";
+import { IJoinDTO } from "../../utils/reducers/types/join";
 
-export const Login = ({ onJoin }: ILoginDTO) => {
+export const Login = ({ onJoin }: ILoginProps) => {
   const {
     register,
     handleSubmit,
@@ -24,7 +25,8 @@ export const Login = ({ onJoin }: ILoginDTO) => {
   const onSubmitConnect: SubmitHandler<TInputsDTO> = async (data) => {
     setLoading(true);
     await axios.post("/rooms", data).then(() => {
-      const options = {
+      const options: IJoinDTO = {
+        joined: true,
         roomId: data.roomId,
         userName: data.nickname,
       };

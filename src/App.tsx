@@ -37,7 +37,6 @@ export default function App() {
       type: EJoin.SET_JOIN,
       payload: {
         ...data,
-        joined: true,
       },
     });
 
@@ -64,7 +63,7 @@ export default function App() {
 
     socket.on("ROOM:PUSH_NEW_MESSAGE", (message) => {
       console.log(message);
-      addMessage(message, messagesDispatch, messagesState);
+      addMessage(message, messagesDispatch);
     });
   }, []);
 

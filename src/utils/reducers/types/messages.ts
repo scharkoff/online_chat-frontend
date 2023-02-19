@@ -1,11 +1,11 @@
 import { IMessageDTO } from "../../../components/dto/message";
 import { EJoin } from "./join";
 
-interface IMessagePayloadDTO {
+interface IAddMessagePayloadDTO {
   message: IMessageDTO;
 }
 
-export interface ISetMessagesAction {
+export interface IAddMessageAction {
   type: EJoin;
-  payload: IMessagePayloadDTO;
+  payload: IAddMessagePayloadDTO;
 }

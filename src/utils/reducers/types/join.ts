@@ -1,5 +1,5 @@
 export interface IJoinDTO {
-  joined?: boolean;
+  joined: boolean;
   roomId: string;
   userName: string;
 }

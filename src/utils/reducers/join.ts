@@ -1,10 +1,10 @@
 import { IJoinAction } from "./types/join";
-import { IJoinStateDTO } from "../state/types/join";
+import { IJoinState } from "../state/types/join";
 
 export default function joinReducer(
-  state: IJoinStateDTO,
+  state: IJoinState,
   action: IJoinAction
-): IJoinStateDTO {
+): IJoinState {
   switch (action.type) {
     case "SET_JOIN":
       return {

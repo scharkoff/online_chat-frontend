@@ -1,11 +1,9 @@
 import { IMessageDTO } from "../dto/message";
-import { IMessagesStateDTO } from "../../utils/state/types/messages";
-import { ISetMessagesAction } from "../../utils/reducers/types/messages";
+import { IAddMessageAction } from "../../utils/reducers/types/messages";
 
-export interface IChatDTO {
+export interface IChatProps {
   addMessage: (
     message: IMessageDTO,
-    dispatch: React.Dispatch<ISetMessagesAction>,
-    state: IMessagesStateDTO
+    dispatch: React.Dispatch<IAddMessageAction>
   ) => void;
 }

@@ -1,4 +1,4 @@
 export interface IMessageDTO {
   text: string;
-  userName?: string;
+  userName: string;
 }

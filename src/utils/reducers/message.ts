@@ -1,10 +1,10 @@
-import { IMessagesStateDTO } from "../state/types/messages";
-import { ISetMessagesAction } from "./types/messages";
+import { IMessagesState } from "../state/types/messages";
+import { IAddMessageAction } from "./types/messages";
 
 export default function messagesReducer(
-  state: IMessagesStateDTO,
-  action: ISetMessagesAction
-): IMessagesStateDTO {
+  state: IMessagesState,
+  action: IAddMessageAction
+): IMessagesState {
   switch (action.type) {
     case "PUSH_MESSAGE":
       console.log("action.payload.message", action.payload.message);

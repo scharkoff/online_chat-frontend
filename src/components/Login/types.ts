@@ -5,6 +5,6 @@ export type TInputsDTO = {
   nickname: string;
 };
 
-export interface ILoginDTO {
+export interface ILoginProps {
   onJoin: (props: IJoinDTO) => void;
 }

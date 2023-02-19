@@ -1,5 +1,5 @@
 import { IUserDTO } from "../../../components/dto/user";
 
-export interface IUsersStateDTO {
+export interface IUsersState {
   users: IUserDTO[];
 }
