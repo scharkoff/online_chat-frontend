@@ -1,5 +1,5 @@
 import { EActionTypes } from "./enum";
-import { IUserDTO } from "../../../components/dto/user";
+import { IUserDTO } from "../../dto/user";
 
 interface ISetUsersPayloadDTO {
   users: IUserDTO[];

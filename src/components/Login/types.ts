@@ -1,4 +1,4 @@
-import { IJoinDTO } from "../../utils/reducers/types/join";
+import { IJoinDTO } from 'utils/reducers/types/join';
 
 export type TInputsDTO = {
   roomId: string;

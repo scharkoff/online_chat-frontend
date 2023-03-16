@@ -1,16 +1,15 @@
-import { IUserDTO } from "../../components/dto/user";
-import { IMessageDTO } from "../../components/dto/message";
-import { ISetUsersAction } from "../reducers/types/user";
-import { IAddMessageAction } from "../reducers/types/messages";
-import { IUsersState } from "../state/types/user";
-import { EActionTypes } from "../reducers/types/enum";
+import { ISetUsersAction } from '../reducers/types/user';
+import { IAddMessageAction } from '../reducers/types/messages';
+import { IUsersState } from '../state/types/user';
+import { EActionTypes } from '../reducers/types/enum';
+import { IUserDTO } from '../dto/user';
+import { IMessageDTO } from '../dto/message';
 
 export function setUsers(
   users: IUserDTO[],
   dispatch: React.Dispatch<ISetUsersAction>,
   state: IUsersState
 ) {
-  console.log("users from setUsers: ", users);
   dispatch({
     type: EActionTypes.SET_USERS,
     payload: { users },

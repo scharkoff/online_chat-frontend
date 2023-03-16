@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import PersonIcon from "@mui/icons-material/Person";
-import Typography from "@mui/material/Typography";
+import PersonIcon from '@mui/icons-material/Person';
+import Typography from '@mui/material/Typography';
 
-import styles from "./scss/UserList.module.scss";
-import { UsersContext, JoinContext } from "../../data/app/context";
-import { IUsersState } from "../../utils/state/types/user";
-import { IJoinState } from "../../utils/state/types/join";
+import styles from './scss/UserList.module.scss';
+import { UsersContext, JoinContext } from 'data/app/context';
+import { IUsersState } from 'utils/state/types/user';
+import { IJoinState } from 'utils/state/types/join';
 
 export default function UserList() {
   const { users } = React.useContext<IUsersState>(UsersContext);
@@ -37,8 +37,9 @@ export default function UserList() {
           variant="subtitle1"
           color="initial"
           className={styles.userName}
+          fontSize={15}
         >
-          Hello, <b style={{ color: "#651fff" }}>{userName}</b>
+          Hello, <b style={{ color: '#651fff' }}>{userName}</b>
         </Typography>
       </div>
     </div>

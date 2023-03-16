@@ -1,5 +1,5 @@
-import { IMessageDTO } from "../../../components/dto/message";
 import { EActionTypes } from "./enum";
+import { IMessageDTO } from "../../dto/message";
 
 interface IAddMessagePayloadDTO {
   message: IMessageDTO;

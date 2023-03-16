@@ -1,13 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./scss/Message.module.scss";
-import clsx from "clsx";
-import { IMessageProps } from "./types";
-import { JoinContext } from "../../data/app/context";
+import styles from './scss/Message.module.scss';
+import clsx from 'clsx';
+import { IMessageProps } from './types';
+import { JoinContext } from 'data/app/context';
 
 export default function Message({ messages }: IMessageProps) {
   const { userName } = React.useContext(JoinContext);
-  console.log("messages", messages);
   return (
     <>
       {messages

@@ -1,5 +1,5 @@
-import { IUserDTO } from "../../components/dto/user";
-import { IMessageDTO } from "../../components/dto/message";
+import { IUserDTO } from "../dto/user";
+import { IMessageDTO } from "../dto/message";
 
 export interface IGetRoomDataDTO {
   data: {

@@ -1,10 +1,10 @@
-import React from "react";
-import { IUsersState } from "../../utils/state/types/user";
-import { IMessagesState } from "../../utils/state/types/messages";
-import initialJoinState from "../../utils/state/join";
-import initialUsersState from "../../utils/state/users";
-import { IAddMessageAction } from "../../utils/reducers/types/messages";
-import { IJoinState } from "../../utils/state/types/join";
+import React from 'react';
+import { IUsersState } from 'utils/state/types/user';
+import { IMessagesState } from 'utils/state/types/messages';
+import initialJoinState from 'utils/state/join';
+import initialUsersState from 'utils/state/users';
+import { IAddMessageAction } from 'utils/reducers/types/messages';
+import { IJoinState } from 'utils/state/types/join';
 
 export interface IMessagesContextDTO {
   messagesState: IMessagesState;

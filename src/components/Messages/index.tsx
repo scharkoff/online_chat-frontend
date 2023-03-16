@@ -1,8 +1,8 @@
-import React from "react";
-import Message from "../Message";
+import React from 'react';
+import Message from '../Message';
 
-import styles from "./scss/Messages.module.scss";
-import { IMessagesContextDTO, MessagesContext } from "../../data/app/context";
+import styles from './scss/Messages.module.scss';
+import { IMessagesContextDTO, MessagesContext } from 'data/app/context';
 
 export default function Messages() {
   const { messagesState } =

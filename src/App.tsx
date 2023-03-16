@@ -1,23 +1,23 @@
-import React from "react";
-import { Login } from "./components/Login";
+import React from 'react';
+import { Login } from 'components/Login';
 
-import joinReducer from "./utils/reducers/join";
-import { IJoinDTO } from "./utils/reducers/types/join";
-import socket from "./utils/socket";
-import axios from "./utils/axios/axios";
-import { setUsers, addMessage } from "./utils/functions/index";
-import { IGetRoomDataDTO } from "./utils/axios/types";
+import joinReducer from 'utils/reducers/join';
+import { IJoinDTO } from 'utils/reducers/types/join';
+import socket from 'utils/socket';
+import axios from 'utils/axios/axios';
+import { setUsers, addMessage } from 'utils/functions/index';
+import { IGetRoomDataDTO } from 'utils/axios/types';
 
-import Chat from "./components/Chat/index";
+import Chat from 'components/Chat/index';
 
-import "./styles/global.scss";
-import initialJoinState from "./utils/state/join";
-import initialUsersState from "./utils/state/users";
-import usersReducer from "./utils/reducers/users";
-import messagesReducer from "./utils/reducers/message";
-import initialMessagesState from "./utils/state/messages";
-import { JoinContext, UsersContext, MessagesContext } from "./data/app/context";
-import { EActionTypes } from "./utils/reducers/types/enum";
+import 'styles/global.scss';
+import initialJoinState from 'utils/state/join';
+import initialUsersState from 'utils/state/users';
+import usersReducer from 'utils/reducers/users';
+import messagesReducer from 'utils/reducers/message';
+import initialMessagesState from 'utils/state/messages';
+import { JoinContext, UsersContext, MessagesContext } from 'data/app/context';
+import { EActionTypes } from 'utils/reducers/types/enum';
 
 export default function App() {
   const [joinState, joinDispatch] = React.useReducer(
@@ -41,34 +41,29 @@ export default function App() {
       },
     });
 
-    socket.emit("ROOM:JOIN", {
+    socket.emit('ROOM:JOIN', {
       roomId: data.roomId,
       userName: data.userName,
     });
 
     axios.get(`/rooms/${data.roomId}`).then(({ data }: IGetRoomDataDTO) => {
-      console.log("data", data);
       setUsers(data.users, usersDispatch, usersState);
     });
   };
 
   React.useEffect(() => {
-    socket.on("ROOM:JOINED", (users) => {
-      console.log("users from joined", users);
+    socket.on('ROOM:JOINED', (users) => {
       setUsers(users, usersDispatch, usersState);
     });
 
-    socket.on("ROOM:UPDATE_USERS", (users) => {
+    socket.on('ROOM:UPDATE_USERS', (users) => {
       setUsers(users, usersDispatch, usersState);
     });
 
-    socket.on("ROOM:PUSH_NEW_MESSAGE", (message) => {
-      console.log(message);
+    socket.on('ROOM:PUSH_NEW_MESSAGE', (message) => {
       addMessage(message, messagesDispatch);
     });
   }, []);
-
-  console.log(joinState, usersState, messagesState);
 
   return (
     <JoinContext.Provider value={joinState}>

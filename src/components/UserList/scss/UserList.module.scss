@@ -2,11 +2,14 @@
   padding: 20px 40px;
   background-color: rgb(248, 248, 248);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .userList {
   list-style: none;
-  width: 200px;
+  width: 100%;
+  min-width: 250px;
   max-height: 470px;
   overflow: auto;
   overflow-x: hidden;
@@ -16,7 +19,7 @@
   display: flex;
   align-items: center;
   word-break: break-all;
-  font-size: 16px;
+  font-size: 14px;
   color: grey;
   margin: 20px 0;
   width: 100%;
@@ -40,12 +43,11 @@
 .helloUser {
   display: flex;
   word-break: break-all;
-  max-width: 200px;
-  position: absolute;
-  bottom: 20px;
+  margin-top: auto;
 }
 
 .userName {
+  width: 100%;
   position: relative;
   padding-top: 10px;
   color: grey !important;

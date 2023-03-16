@@ -1,4 +1,4 @@
-import { IMessageDTO } from "../dto/message";
+import { IMessageDTO } from 'utils/dto/message';
 
 export interface IMessageProps {
   messages: IMessageDTO[];

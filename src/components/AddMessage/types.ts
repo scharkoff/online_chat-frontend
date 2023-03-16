@@ -1,5 +1,5 @@
-import { IMessageDTO } from "../dto/message";
-import { IAddMessageAction } from "../../utils/reducers/types/messages";
+import { IAddMessageAction } from 'utils/reducers/types/messages';
+import { IMessageDTO } from 'utils/dto/message';
 
 export interface IAddMessageProps {
   addMessage: (
