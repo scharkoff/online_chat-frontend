@@ -46,6 +46,10 @@ export default function App() {
       userName: data.userName,
     });
 
+    socket.emit('ROOM:GET_MESSAGES', {
+      roomId: data.roomId,
+    });
+
     axios.get(`/rooms/${data.roomId}`).then(({ data }: IGetRoomDataDTO) => {
       setUsers(data.users, usersDispatch, usersState);
     });
@@ -62,6 +66,13 @@ export default function App() {
 
     socket.on('ROOM:PUSH_NEW_MESSAGE', (message) => {
       addMessage(message, messagesDispatch);
+    });
+
+    socket.on('ROOM:GIVE_MESSAGES', (messages) => {
+      messagesDispatch({
+        type: EActionTypes.UPLOAD_MESSAGES,
+        payload: { messages },
+      });
     });
   }, []);
 

@@ -1,11 +1,15 @@
-import { EActionTypes } from "./enum";
-import { IMessageDTO } from "../../dto/message";
+import { EActionTypes } from './enum';
+import { IMessageDTO } from '../../dto/message';
 
-interface IAddMessagePayloadDTO {
+export interface IAddMessagePayloadDTO {
   message: IMessageDTO;
+}
+
+export interface IUploadMessagesDTO {
+  messages: IMessageDTO[];
 }
 
 export interface IAddMessageAction {
   type: EActionTypes;
-  payload: IAddMessagePayloadDTO;
+  payload: IAddMessagePayloadDTO | IUploadMessagesDTO;
 }
