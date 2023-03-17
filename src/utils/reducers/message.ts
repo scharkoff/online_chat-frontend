@@ -33,7 +33,6 @@ export default function messagesReducer(
 
     case 'UPLOAD_MESSAGES':
       if (isIUploadMessagesDTO(action.payload)) {
-        console.log(action.payload);
         return {
           ...state,
           messages: [...state.messages, ...action.payload.messages],

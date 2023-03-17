@@ -18,9 +18,9 @@ import { IMessageDTO } from 'utils/dto/message';
 export default function AddMessage({ addMessage }: IAddMessageProps) {
   const [text, setText] = React.useState<string>('');
 
-  const { roomId, userName } = React.useContext<IJoinState>(JoinContext);
-  const { messagesDispatch } =
-    React.useContext<IMessagesContextDTO>(MessagesContext);
+  const { roomId, userName } = React.useContext<IJoinState>(JoinContext),
+    { messagesDispatch } =
+      React.useContext<IMessagesContextDTO>(MessagesContext);
 
   function onSendMessage() {
     socket.emit('ROOM:NEW_MESSAGE', {
