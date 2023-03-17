@@ -33,7 +33,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    content: "";
+    content: '';
     height: 1px;
     width: 100%;
     background-color: #dddddd;
@@ -56,9 +56,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
+    content: '';
     height: 1px;
     width: 100%;
     background-color: #dddddd;
   }
 }
+
+@import './UserList.media.module.scss';

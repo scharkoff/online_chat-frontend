@@ -1,4 +1,9 @@
 .chatWindow {
   padding: 40px 30px;
-  width: 650px;
 }
+
+.chat {
+  display: flex;
+}
+
+@import './Chat.media.module.scss';
