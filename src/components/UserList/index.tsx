@@ -6,7 +6,7 @@ import { UsersContext, JoinContext } from 'data/app/context';
 import { IUsersState } from 'utils/state/types/user';
 import { IJoinState } from 'utils/state/types/join';
 
-export default function UserList() {
+export function UserList() {
   const { users } = React.useContext<IUsersState>(UsersContext);
   const { userName, roomId } = React.useContext<IJoinState>(JoinContext);
 
@@ -31,12 +31,7 @@ export default function UserList() {
           : []}
       </ul>
       <div className={styles.helloUser}>
-        <Typography
-          variant="subtitle1"
-          color="initial"
-          className={styles.userName}
-          fontSize={15}
-        >
+        <Typography variant="subtitle1" color="initial" className={styles.userName} fontSize={15}>
           Hello, <b style={{ color: '#651fff' }}>{userName}</b>
         </Typography>
       </div>

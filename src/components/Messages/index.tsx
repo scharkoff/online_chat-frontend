@@ -1,11 +1,10 @@
 import React from 'react';
-import Message from '../Message';
 import styles from './scss/Messages.module.scss';
 import { IMessagesContextDTO, MessagesContext } from 'data/app/context';
+import { Message } from 'components';
 
-export default function Messages() {
-  const { messagesState } =
-    React.useContext<IMessagesContextDTO>(MessagesContext);
+export function Messages() {
+  const { messagesState } = React.useContext<IMessagesContextDTO>(MessagesContext);
 
   return (
     <div className={styles.messagesWindow}>

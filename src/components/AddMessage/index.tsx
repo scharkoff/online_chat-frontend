@@ -6,24 +6,19 @@ import socket from 'utils/socket';
 import { IAddMessageProps } from './types';
 import { IJoinState } from 'utils/state/types/join';
 import { IMessageDTO } from 'utils/dto/message';
-import {
-  JoinContext,
-  MessagesContext,
-  IMessagesContextDTO,
-} from 'data/app/context';
+import { JoinContext, MessagesContext, IMessagesContextDTO } from 'data/app/context';
 
-export default function AddMessage({ addMessage }: IAddMessageProps) {
+export function AddMessage({ addMessage }: IAddMessageProps) {
   const [text, setText] = React.useState<string>('');
 
   const { roomId, userName } = React.useContext<IJoinState>(JoinContext),
-    { messagesDispatch } =
-      React.useContext<IMessagesContextDTO>(MessagesContext);
+    { messagesDispatch } = React.useContext<IMessagesContextDTO>(MessagesContext);
 
   function onSendMessage() {
     socket.emit('ROOM:NEW_MESSAGE', {
       roomId,
       text,
-      userName,
+      userName
     });
     const message: IMessageDTO = { userName, text };
     addMessage(message, messagesDispatch);
@@ -42,12 +37,7 @@ export default function AddMessage({ addMessage }: IAddMessageProps) {
         maxRows={5}
       />
 
-      <Button
-        onClick={onSendMessage}
-        variant="contained"
-        color="primary"
-        disabled={Boolean(!text)}
-      >
+      <Button onClick={onSendMessage} variant="contained" color="primary" disabled={Boolean(!text)}>
         Send
       </Button>
     </div>

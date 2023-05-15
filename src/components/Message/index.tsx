@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { IMessageProps } from './types';
 import { JoinContext } from 'data/app/context';
 
-export default function Message({ messages }: IMessageProps) {
+export function Message({ messages }: IMessageProps) {
   const { userName } = React.useContext(JoinContext);
   return (
     <>
@@ -14,7 +14,7 @@ export default function Message({ messages }: IMessageProps) {
               <div
                 className={clsx({
                   [styles.message]: true,
-                  [styles.myMessage]: userName === message?.userName,
+                  [styles.myMessage]: userName === message?.userName
                 })}
                 key={message?.text ? message?.text + i : i + Math.random() * 10}
               >
