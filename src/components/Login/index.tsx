@@ -1,16 +1,13 @@
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
 import styles from './scss/Login.module.scss';
-
-import { TInputsDTO, ILoginProps } from './types';
 import axios from 'utils/axios/axios';
-import { IJoinDTO } from 'utils/reducers/types/join';
 import Typography from '@mui/material/Typography';
+import { TInputsDTO, ILoginProps } from './types';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { IJoinDTO } from 'utils/reducers/types/join';
 
 export const Login = ({ onJoin }: ILoginProps) => {
   const {

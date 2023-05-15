@@ -1,23 +1,20 @@
 import React from 'react';
-import { Login } from 'components/Login';
-
-import joinReducer from 'utils/reducers/join';
-import { IJoinDTO } from 'utils/reducers/types/join';
-import socket from 'utils/socket';
-import axios from 'utils/axios/axios';
-import { setUsers, addMessage } from 'utils/functions/index';
-import { IGetRoomDataDTO } from 'utils/axios/types';
-
 import Chat from 'components/Chat/index';
-
-import 'styles/global.scss';
-import initialJoinState from 'utils/state/join';
+import socket from 'utils/socket';
+import joinReducer from 'utils/reducers/join';
+import axios from 'utils/axios/axios';
 import initialUsersState from 'utils/state/users';
+import initialJoinState from 'utils/state/join';
 import usersReducer from 'utils/reducers/users';
 import messagesReducer from 'utils/reducers/message';
 import initialMessagesState from 'utils/state/messages';
+import { Login } from 'components/Login';
+import { IJoinDTO } from 'utils/reducers/types/join';
+import { setUsers, addMessage } from 'utils/functions/index';
+import { IGetRoomDataDTO } from 'utils/axios/types';
 import { JoinContext, UsersContext, MessagesContext } from 'data/app/context';
 import { EActionTypes } from 'utils/reducers/types/enum';
+import 'styles/global.scss';
 
 export default function App() {
   const [joinState, joinDispatch] = React.useReducer(

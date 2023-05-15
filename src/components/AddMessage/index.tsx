@@ -1,19 +1,16 @@
 import React from 'react';
-
 import TextareaAutosize from '@mui/base/TextareaAutosize';
-
 import styles from './scss/AddMessage.module.scss';
 import Button from '@mui/material/Button';
 import socket from 'utils/socket';
 import { IAddMessageProps } from './types';
-
+import { IJoinState } from 'utils/state/types/join';
+import { IMessageDTO } from 'utils/dto/message';
 import {
   JoinContext,
   MessagesContext,
   IMessagesContextDTO,
 } from 'data/app/context';
-import { IJoinState } from 'utils/state/types/join';
-import { IMessageDTO } from 'utils/dto/message';
 
 export default function AddMessage({ addMessage }: IAddMessageProps) {
   const [text, setText] = React.useState<string>('');

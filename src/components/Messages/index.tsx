@@ -1,6 +1,5 @@
 import React from 'react';
 import Message from '../Message';
-
 import styles from './scss/Messages.module.scss';
 import { IMessagesContextDTO, MessagesContext } from 'data/app/context';
 

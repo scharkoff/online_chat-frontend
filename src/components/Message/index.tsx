@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from './scss/Message.module.scss';
 import clsx from 'clsx';
 import { IMessageProps } from './types';

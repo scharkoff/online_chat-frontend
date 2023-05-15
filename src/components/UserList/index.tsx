@@ -1,8 +1,6 @@
 import React from 'react';
-
 import PersonIcon from '@mui/icons-material/Person';
 import Typography from '@mui/material/Typography';
-
 import styles from './scss/UserList.module.scss';
 import { UsersContext, JoinContext } from 'data/app/context';
 import { IUsersState } from 'utils/state/types/user';
